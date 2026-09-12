@@ -1,0 +1,67 @@
+/*
+Description:
+
+Step 1: Create a function called encode() to replace all the lowercase vowels in a given string with numbers according to the following pattern:
+
+a -> 1
+e -> 2
+i -> 3
+o -> 4
+u -> 5
+
+For example, encode("hello") would return "h2ll4". There is no need to worry about uppercase vowels in this kata.
+
+Step 2: Now create a function called decode() to turn the numbers back into vowels according to the same pattern shown above.
+
+For example, decode("h3 th2r2") would return "hi there".
+
+For the sake of simplicity, you can assume that any numbers passed into the function will correspond to vowels.
+*/
+
+//PREP
+/*
+P: string
+R: string
+E: encode("hello") output: "h2ll4" decode("h2ll4") output: "hello"
+P:
+vowels = [" ", "a", "e", "i", "o", "u"]
+
+encode(string)
+  string = string.split("")
+  FOR char OF string
+    IF vowels.find((element) => element === (char)) THEN
+      char = String(vowels.indexOf(char))
+  RETURN string.join("")
+
+decode(string)
+  string = string.split("")
+  FOR index = 0 TO string.length
+    IF string[index] > "1" && string[index] < "5" THEN
+      string[index] = vowels[+(string[index])]
+  RETURN string.join("")
+*/
+
+let vowels = ["", "a", "e", "i", "o", "u"];
+
+function encode(string) {
+  string = string.split("");
+  for (let i = 0; i < string.length; i++){
+    if (vowels.find((element) => element === (string[i]))){
+      string[i] = String(vowels.indexOf(string[i]));
+    }
+  }
+  console.log(string);
+  return string.join("");
+}
+
+function decode(string) {
+  string = string.split("");
+  for (let i = 0; i < string.length; i++){
+    if (string[i] > "1" && string[i] < "5"){
+      string[i] = vowels[+string[i]];
+    }
+  }
+
+  console.log(string);
+  return string.join("");
+}
